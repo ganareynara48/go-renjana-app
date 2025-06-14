@@ -24,5 +24,5 @@ Renjana-app adalah aplikasi backend REST API untuk dummy project Renjana Cafe an
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/username/mygoapp.git
-cd mygoapp
+git clone https://github.com/ganareynara48/go-renjana-app
+cd go-renjana-app

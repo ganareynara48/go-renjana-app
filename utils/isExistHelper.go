@@ -66,3 +66,19 @@ func IsUserExist(tx *gorm.DB, userID string) (bool, error) {
 	}
 	return false, err
 }
+
+func IsProductExist(tx *gorm.DB, name string) (bool, error) {
+	var master_product models.MasterProduct
+
+	err := tx.Where(map[string]any{
+		"name": name,
+	}).First(&master_product).Error
+
+	if err == nil {
+		return true, nil
+	}
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return false, nil
+	}
+	return false, err
+}
