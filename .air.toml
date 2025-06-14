@@ -1,0 +1,21 @@
+root = "."
+tmp_dir = "tmp"
+
+# Verbose build command
+build_cmd = "go build -v -o ./tmp/main ./cmd/main.go"
+run_cmd = "./tmp/main"
+
+[build]
+# Explicitly list Go files and build settings
+cmd = "go build -v -o ./tmp/main ./cmd/main.go"
+include_ext = ["go", "env", "mod"]
+include_dir = ["cmd", "config", "controllers", "database", "middlewares", "models", "routes", "utils"]
+exclude_dir = [
+    "tmp",
+    ".git"
+]
+
+[log]
+time = true
+colors = true
+level = "debug"
