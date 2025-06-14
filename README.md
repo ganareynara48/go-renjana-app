@@ -1,4 +1,4 @@
-# 🏗️ MyGoApp
+# ☕️ Renjana Cafe and Roastery
 
 Renjana-app adalah aplikasi backend REST API untuk dummy project Renjana Cafe and Roastery yang dibuat menggunakan [Go](https://golang.org/), [Gin Web Framework](https://github.com/gin-gonic/gin), dan [GORM](https://gorm.io/) sebagai ORM.
 
