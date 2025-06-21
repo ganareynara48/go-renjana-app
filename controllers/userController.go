@@ -308,7 +308,7 @@ func UpdateUser(c *gin.Context) {
 	}
 
 	var user models.User
-	res := tx.Where(map[string]interface{}{
+	res := tx.Where(map[string]any{
 		"id":         reqID,
 		"deleted_at": nil,
 		"deleted_by": nil,
@@ -498,7 +498,7 @@ func DeleteUser(c *gin.Context) {
 	}
 
 	var user models.User
-	res := tx.Where(map[string]interface{}{
+	res := tx.Where(map[string]any{
 		"id":         reqID,
 		"deleted_at": nil,
 		"deleted_by": nil,

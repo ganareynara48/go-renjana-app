@@ -8,13 +8,17 @@ import (
 )
 
 type MasterProduct struct {
-	ID          uuid.UUID `gorm:"type:uuid;primaryKey" json:"id"`
+	ID          uuid.UUID `gorm:"type:uuid;primaryKey;index" json:"id"`
 	Name        string    `gorm:"type:varchar(100);not null" json:"name"`
 	Description string    `gorm:"type:text;not null" json:"description"`
 	Price       float64   `gorm:"type:decimal(10,2);not null" json:"price"`
 	Image       string    `gorm:"type:text;not null" json:"image"`
+	Category    string    `gorm:"type:varchar(100);not null" json:"category"`
 
-	IsActive bool `gorm:"default:false" json:"is_active"`
+	IsActive   bool `gorm:"default:false" json:"is_active"`
+	IsBeverage bool `gorm:"default:false" json:"is_beverage"`
+
+	BasketOrders []BasketOrder `gorm:"foreignKey:ProductID" json:"basket_orders"`
 
 	//audit fields
 	CreatedAt time.Time      `json:"created_at"`

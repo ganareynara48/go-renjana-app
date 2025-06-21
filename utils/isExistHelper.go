@@ -82,3 +82,18 @@ func IsProductExist(tx *gorm.DB, name string) (bool, error) {
 	}
 	return false, err
 }
+
+func IsProductCategoryNameTaken(tx *gorm.DB, name string) (bool, error) {
+	var pc models.ProductCategory
+	err := tx.Where("LOWER(name) = LOWER(?)", name).
+		Where("deleted_by IS NULL").
+		First(&pc).Error
+
+	if err == nil {
+		return true, nil
+	}
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return false, nil
+	}
+	return false, err
+}
