@@ -204,7 +204,7 @@ func GetAllAddressByUserID(c *gin.Context) {
 
 	if err := tx.Where("user_id = ?", user_id).Find(&address).Error; err != nil {
 		tx.Rollback()
-		c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
+		c.JSON(http.StatusNotFound, gin.H{"error": "Address not found"})
 		return
 	}
 
@@ -215,7 +215,7 @@ func GetAllAddressByUserID(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"message": "Success catch all users!",
+		"message": "Success catch all addresses!",
 		"data":    address,
 	})
 }
@@ -233,7 +233,7 @@ func GetActiveAddress(c *gin.Context) {
 
 	if err := tx.Where("user_id = ? AND is_default is true", user_id).Find(&address).Error; err != nil {
 		tx.Rollback()
-		c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
+		c.JSON(http.StatusNotFound, gin.H{"error": "Address not found"})
 		return
 	}
 
@@ -244,7 +244,7 @@ func GetActiveAddress(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"message": "Success catch all users!",
+		"message": "Success catch address!",
 		"data":    address,
 	})
 }
